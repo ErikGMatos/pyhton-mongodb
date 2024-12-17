@@ -121,7 +121,21 @@ def test_edit_many_registries():
     orders_repository.edit_many_registries()
 
 
+@pytest.mark.skip(reason="Interaction with db")
 def test_edit_registry_with_increment():
     orders_repository = OrdersRepository(conn)
     object_id = "67608c25722215e9728d4a7d"
     orders_repository.edit_registry_with_increment(object_id)
+
+
+@pytest.mark.skip(reason="Interaction with db")
+def test_delete_registry():
+    orders_repository = OrdersRepository(conn)
+    object_id = "676088a8722215e9728d4a7b"
+    orders_repository.delete_registry(object_id)
+
+
+@pytest.mark.skip(reason="Interaction with db")
+def test_delete_many_registries():
+    orders_repository = OrdersRepository(conn)
+    orders_repository.delete_many_registry()
