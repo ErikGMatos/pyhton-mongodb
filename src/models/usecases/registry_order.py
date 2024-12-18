@@ -4,6 +4,8 @@ from src.main.http_types.http_request import HttpRequest
 from src.main.http_types.http_response import HttpResponse
 from src.models.repository.interfaces.orders_repository import \
     OrdersRepositoryInterface
+from src.models.validators.registry_order_validator import \
+    registry_order_validator
 
 
 class RegistryOrder:
@@ -13,6 +15,8 @@ class RegistryOrder:
     def registry(self, http_request: HttpRequest) -> HttpResponse:
         try:
             body = http_request.body
+            self.validate_body(body)
+
             new_order = self.__format_new_order(body)
             self.registry_order(new_order)
 
@@ -22,6 +26,9 @@ class RegistryOrder:
                 body={"error": str(exception)},
                 status_code=400
             )
+
+    def validate_body(self, body: dict) -> None:
+        registry_order_validator(body)
 
     def __format_new_order(self, body: dict) -> dict:
         new_order = body["data"]
