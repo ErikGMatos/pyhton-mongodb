@@ -2,8 +2,11 @@
 from bson.objectid import ObjectId
 from pymongo.database import Database
 
+from src.models.repository.interfaces.orders_repository import \
+    OrdersRepositoryInterface
 
-class OrdersRepository:
+
+class OrdersRepository(OrdersRepositoryInterface):
     def __init__(self, db_connection: Database):
         self.__collection_name = "orders"
         self.__db_connection = db_connection
