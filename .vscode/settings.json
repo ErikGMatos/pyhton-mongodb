@@ -10,7 +10,7 @@
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
       "source.organizeImports": "explicit",
-      "source.unusedImports": "explicit",
+      // "source.unusedImports": "explicit",
     },
   },
   "python.analysis.indexing": true,
